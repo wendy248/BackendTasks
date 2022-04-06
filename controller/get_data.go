@@ -8,7 +8,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-
 //Read Data from database
 func ReadData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
