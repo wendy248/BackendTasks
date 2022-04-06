@@ -9,7 +9,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-
 // Delete Data
 func DeleteData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
