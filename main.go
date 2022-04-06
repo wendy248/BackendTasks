@@ -1,8 +1,8 @@
 package main
 
 import (
+	"Github/BackendTasks/config"
 	"Github/BackendTasks/controller"
-	"Github/BackendTasks/models"
 
 	"github.com/gin-gonic/gin"
 )
@@ -10,7 +10,7 @@ import (
 func main() {
 	r := gin.Default()
 	//Models
-	db := models.SetupModels()
+	db := config.SetupModels()
 	r.Use(func(c *gin.Context) {
 		c.Set("db", db)
 		c.Next()

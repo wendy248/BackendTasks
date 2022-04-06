@@ -1,6 +1,8 @@
-package models
+package config
 
 import (
+	"Github/BackendTasks/models"
+
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
@@ -11,6 +13,6 @@ func SetupModels() *gorm.DB {
 		panic("connection to database error")
 	}
 
-	db.AutoMigrate(&Animal{})
+	db.AutoMigrate(&models.Animal{})
 	return db
 }
