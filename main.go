@@ -9,8 +9,8 @@ import (
 
 func main() {
 	r := gin.Default()
-	//Models
 	db := config.SetupModels()
+
 	r.Use(func(c *gin.Context) {
 		c.Set("db", db)
 		c.Next()
