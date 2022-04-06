@@ -5,5 +5,4 @@ type Animal struct {
 	Name  string `json:"name" gorm:"NOT_NULL"`
 	Class string `json:"class" gorm:"NOT_NULL"`
 	Legs  int16  `json:"legs" gorm:"NOT_NULL"`
-	
 }
