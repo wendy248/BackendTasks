@@ -8,7 +8,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-
 //Read Data by ID from database
 func ReadDataByID(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
