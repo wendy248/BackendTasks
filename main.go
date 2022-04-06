@@ -1,6 +1,8 @@
 package main
 
 import (
+	"Github/BackendTasks/controller"
+	"Github/BackendTasks/models"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -9,7 +11,7 @@ import (
 func main() {
 	r := gin.Default()
 	//Models
-	db := models.SetUpModels()
+	db := models.SetupModels()
 	r.Use(func(c *gin.Context) {
 		c.Set("db", db)
 		c.Next()
@@ -19,4 +21,8 @@ func main() {
 			"message": "golang web api",
 		})
 	})
+
+	r.POST("/animal", controller.UploadData)
+
+	r.Run()
 }
