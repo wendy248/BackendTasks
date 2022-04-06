@@ -11,7 +11,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-
 // Update Data
 func UpdateData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
