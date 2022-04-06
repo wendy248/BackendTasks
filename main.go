@@ -21,8 +21,9 @@ func main() {
 			"message": "golang web api",
 		})
 	})
-
+	r.GET("/animal", controller.ReadData)
 	r.POST("/animal", controller.UploadData)
+	r.PUT("/animal", controller.UpdateData)
 
 	r.Run()
 }
