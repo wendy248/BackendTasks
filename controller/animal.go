@@ -37,17 +37,13 @@ func ReadData(c *gin.Context) {
 func UploadData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
-	//Validate Input
 	var animal models.Animal
 	var dataInput AnimalInput
 
-	err := c.ShouldBindJSON(&dataInput)
-	err2 := db.Where("name = ?", dataInput.Name).Find(&animal).Error
-
-	if err != nil {
+	if err := c.ShouldBindJSON(&dataInput); err != nil {
 		errorMessages := []string{}
 		for _, e := range err.(validator.ValidationErrors) {
-			errorMessage := fmt.Sprintf("Error %s, message: %s", e.Field(), e.ActualTag())
+			errorMessage := fmt.Sprintf("%s field is %s", e.Field(), e.ActualTag())
 			errorMessages = append(errorMessages, errorMessage)
 		}
 		c.JSON(http.StatusBadRequest, gin.H{
@@ -56,21 +52,20 @@ func UploadData(c *gin.Context) {
 		return
 	}
 
-	if err2 == nil {
+	if err2 := db.Where("name = ?", dataInput.Name).Find(&animal).Error; err2 == nil {
 		c.JSON(http.StatusBadRequest, gin.H{
-			"error": "Data already exist in database",
+			"error": "Denied. Animal name is already exist in database",
 		})
 		return
 	}
 
-	//Process Input
 	mhs := models.Animal{
 		Name:  dataInput.Name,
 		Class: dataInput.Class,
 		Legs:  dataInput.Legs,
 	}
 
-	db.Create(&mhs) //Create DB MySQL
+	db.Create(&mhs)
 	c.JSON(http.StatusOK, gin.H{
 		"message": "Successfully insert data",
 		"Data":    mhs,
@@ -81,20 +76,16 @@ func UploadData(c *gin.Context) {
 func UpdateData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
-	//Validate Data
 	var animal models.Animal
 	var inputAnimal AnimalUpdate
 
-	err := c.ShouldBindJSON(&inputAnimal)
-
-	if err != nil {
+	if err := c.ShouldBindJSON(&inputAnimal); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": err.Error(),
 		})
 		return
 	}
 
-	// Update Data
 	db.Model(&animal).Update(&inputAnimal)
 	c.JSON(http.StatusOK, gin.H{
 		"Message": "Successfull to Update Data",
