@@ -16,7 +16,7 @@ type AnimalInput struct {
 	Legs  int16  `json:"legs" binding:"required"`
 }
 
-//Read Data
+//Read Data from database
 func ReadData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var animal []models.Animal
@@ -34,6 +34,7 @@ func ReadData(c *gin.Context) {
 	}
 }
 
+//Read Data by ID from database
 func ReadDataByID(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var animal models.Animal
@@ -49,7 +50,7 @@ func ReadDataByID(c *gin.Context) {
 	}
 }
 
-//Create Data / Upload Data
+//Insert / Upload Data to database
 func UploadData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 
@@ -130,13 +131,13 @@ func UpdateData(c *gin.Context) {
 	}
 }
 
+// Delete Data
 func DeleteData(c *gin.Context) {
 	db := c.MustGet("db").(*gorm.DB)
 	var animal models.Animal
 
-	a := c.Param("name")
-	if err := db.Where("name = ?", a).Find(&animal).Error; err != nil {
-		errorMessage := fmt.Sprintf("Data %s does not exist in database", a)
+	if err := db.Where("name = ?", c.Param("name")).Find(&animal).Error; err != nil {
+		errorMessage := fmt.Sprintf("Data %s does not exist in database", c.Param("name"))
 		c.JSON(http.StatusBadRequest, gin.H{
 			"error": errorMessage,
 		})
