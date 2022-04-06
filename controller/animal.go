@@ -22,9 +22,32 @@ func ReadData(c *gin.Context) {
 	var animal []models.Animal
 
 	db.Find(&animal)
-	c.JSON(http.StatusOK, gin.H{
-		"data": animal,
-	})
+
+	if len(animal) == 0 {
+		c.JSON(http.StatusNotFound, gin.H{
+			"Error": "Data not found",
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"data": animal,
+		})
+	}
+}
+
+func ReadDataByID(c *gin.Context) {
+	db := c.MustGet("db").(*gorm.DB)
+	var animal models.Animal
+
+	if err := db.Where("id = ?", c.Param("id")).Find(&animal).Error; err != nil {
+		errorMessage := fmt.Sprintf("ID %s does not exist in database", c.Param("id"))
+		c.JSON(http.StatusNotFound, gin.H{
+			"error": errorMessage,
+		})
+	} else {
+		c.JSON(http.StatusOK, gin.H{
+			"data": animal,
+		})
+	}
 }
 
 //Create Data / Upload Data
@@ -94,7 +117,7 @@ func UpdateData(c *gin.Context) {
 
 		db.Create(&anm)
 		c.JSON(http.StatusOK, gin.H{
-			"message": "No data found in database, so the program inserted the data to database",
+			"message": "Data does not exist in database, so the program inserted the data to database",
 			"Data":    anm,
 		})
 

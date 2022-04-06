@@ -17,6 +17,7 @@ func main() {
 	})
 
 	r.GET("/animal", controller.ReadData)
+	r.GET("/animal/:id", controller.ReadDataByID)
 	r.POST("/animal", controller.UploadData)
 	r.PUT("/animal", controller.UpdateData)
 	r.DELETE("/animal/:name", controller.DeleteData)
