@@ -1,4 +1,4 @@
-package controller
+package datastruct
 
 type AnimalInput struct {
 	Name  string `json:"name" binding:"required"`
