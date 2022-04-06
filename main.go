@@ -15,12 +15,13 @@ func main() {
 		c.Set("db", db)
 		c.Next()
 	})
+	v1 := r.Group("/v1")
 
-	r.GET("/animal", controller.ReadData)
-	r.GET("/animal/:id", controller.ReadDataByID)
-	r.POST("/animal", controller.UploadData)
-	r.PUT("/animal", controller.UpdateData)
-	r.DELETE("/animal/:name", controller.DeleteData)
+	v1.GET("/animal", controller.ReadData)
+	v1.GET("/animal/:id", controller.ReadDataByID)
+	v1.POST("/animal", controller.UploadData)
+	v1.PUT("/animal", controller.UpdateData)
+	v1.DELETE("/animal/:name", controller.DeleteData)
 
 	r.Run()
 }

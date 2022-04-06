@@ -39,9 +39,8 @@ func ReadDataByID(c *gin.Context) {
 	var animal models.Animal
 
 	if err := db.Where("id = ?", c.Param("id")).Find(&animal).Error; err != nil {
-		errorMessage := fmt.Sprintf("ID %s does not exist in database", c.Param("id"))
 		c.JSON(http.StatusNotFound, gin.H{
-			"error": errorMessage,
+			"error": "Data not found",
 		})
 	} else {
 		c.JSON(http.StatusOK, gin.H{
