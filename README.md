@@ -3,10 +3,10 @@
 Program BackendTasks dibuat tanpa menggunakan docker, sehingga diperlukan untuk menginstall beberapa aplikasi sebelum menjalankan program. 
 
 Berikut adalah aplikasi yang digunakan dalam proses pembuatan :
-    1. Visual Code Studio
-    2. XAMPP    (Program ini menggunakan database MySQL)
-    3. Postman
-    4. Browser
+1. Visual Code Studio
+2. XAMPP    (Program ini menggunakan database MySQL)
+3. Postman
+4. Browser
 
 Berikut adalah tahapan yang perlu dilakukan untuk menjalankan server yang telah dibuat pada program :
     1. Untuk menjalankan program ini, diperlukan untuk membuka XAMPP dan menjalankan Service "Apache" dan "MySQL".
