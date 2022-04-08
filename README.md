@@ -2,7 +2,11 @@
 
 Program BackendTasks dibuat tanpa menggunakan docker, sehingga diperlukan untuk menginstall beberapa aplikasi sebelum menjalankan program. 
 
-Aplikasi ini menggunakan database MySQL
+Aplikasi ini menggunakan database MySQL dan beberapa library seperti berikut :
+1. github.com/gin-gonic/gin
+2. github.com/jinzhu/gorm
+3. github.com/go-playground/validator/v10
+4. github.com/jinzhu/gorm/dialects/mysql
 
 Berikut adalah tahapan yang perlu dilakukan untuk menjalankan server yang telah dibuat pada program :
 1. Untuk menjalankan program ini, diperlukan untuk membuka XAMPP dan menjalankan Service "Apache" dan "MySQL".
