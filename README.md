@@ -17,5 +17,10 @@ Berikut adalah URL untuk melakukan test API menggunakan Postman :
 1. GET ALL      : "localhost:8080/v1/animal"
 2. GET by ID    : "localhost:8080/v1/animal/{id}"
 3. POST DATA    : "localhost:8080/v1/animal"
-4. PUT DATA     : "localhost:8080/v1/animal"    (PUT handler menggunakan animal name sebagai identifikasi data di database.)
+4. PUT DATA     : "localhost:8080/v1/animal"
 5. DELETE DATA  : "localhost:8080/v1/animal/{animal name}"
+
+Berikut juga terlampir file Postman yang dapat digunakan untuk pengujian API dengan format .JSON
+
+Catatan :
+PUT handler menggunakan animal name sebagai identifikasi data di database.
