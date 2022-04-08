@@ -9,9 +9,11 @@ Berikut adalah aplikasi yang digunakan dalam proses pembuatan :
 4. Browser
 
 Berikut adalah tahapan yang perlu dilakukan untuk menjalankan server yang telah dibuat pada program :
-    1. Untuk menjalankan program ini, diperlukan untuk membuka XAMPP dan menjalankan Service "Apache" dan "MySQL".
-    2. Buka url "http://localhost/phpmyadmin" dan buat database baru dengan nama "dbbackend".
-    3. Jalankan program/server pada main.go dengan mengetik "go run main.go" pada terminal program.
+1. Untuk menjalankan program ini, diperlukan untuk membuka XAMPP dan menjalankan Service "Apache" dan "MySQL".
+2. Buka url "http://localhost/phpmyadmin" dan buat database baru dengan nama "dbbackend".
+3. Jalankan program/server pada main.go dengan mengetik "go run main.go" pada terminal program.
 
 Berikut adalah tahapan untuk melakukan test API menggunakan Postman :
-    1. Untuk GET ALL request,  
+1. GET ALL      : pilih handler GET pada Postman dan gunakan URL "localhost:8080/v1/animal"
+2. GET by ID    : pilih handler GET pada Postman dan gunakan URL "localhost:8080/v1/animal/{id}"
+3. POST DATA    : pilih handler POST pada Postman dan gunakan URL "localhost:8080/v1/animal"
