@@ -2,7 +2,9 @@
 
 Program BackendTasks dibuat tanpa menggunakan docker, sehingga diperlukan untuk menginstall beberapa aplikasi sebelum menjalankan program. 
 
-Aplikasi ini menggunakan database MySQL dan beberapa library seperti berikut :
+Program ini menggunakan database MySQL.
+
+Program ini juga beberapa library seperti berikut :
 1. github.com/gin-gonic/gin
 2. github.com/jinzhu/gorm
 3. github.com/go-playground/validator/v10
