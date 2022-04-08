@@ -20,7 +20,7 @@ Berikut adalah URL untuk melakukan test API menggunakan Postman :
 4. PUT DATA     : "localhost:8080/v1/animal"
 5. DELETE DATA  : "localhost:8080/v1/animal/{animal name}"
 
-Berikut juga terlampir file Postman yang dapat digunakan untuk pengujian API dengan format .JSON
+Pada repository, juga terlampir Postman Collection yang dapat digunakan untuk pengujian API dengan format .JSON. File tersebut dapat digunakan untuk menguji API dengan menggunakan Postman 
 
 Catatan :
 PUT handler menggunakan animal name sebagai identifikasi data di database.
